@@ -1,0 +1,275 @@
+/* ─────────────────────────────────────────────────────────────────────────────
+   Input.css — Floating label, premium card-lift on focus
+   ───────────────────────────────────────────────────────────────────────────── */
+
+
+/* ── WRAPPER ───────────────────────────────────────────────────────────────── */
+.input-wrapper {
+  position:  relative;
+  width:     100%;
+  /* Card lift transition on wrapper */
+  transition:
+    transform  0.22s cubic-bezier(0.34, 1.2, 0.64, 1),
+    box-shadow 0.22s ease;
+  border-radius: 10px;
+}
+
+/* Lift the whole card on focus */
+.input-wrapper--focused {
+  transform:  translateY(-2px);
+  box-shadow: 0 8px 24px rgba(79, 70, 229, 0.12), 0 2px 8px rgba(79, 70, 229, 0.08);
+}
+
+.input-wrapper--error {
+  transform:  translateY(-2px);
+  box-shadow: 0 8px 24px rgba(239, 68, 68, 0.1), 0 2px 8px rgba(239, 68, 68, 0.07);
+}
+
+.input-wrapper--success {
+  transform:  translateY(-2px);
+  box-shadow: 0 8px 24px rgba(16, 185, 129, 0.1), 0 2px 8px rgba(16, 185, 129, 0.07);
+}
+
+.input-wrapper--disabled {
+  opacity: 0.55;
+  pointer-events: none;
+}
+
+
+/* ── FIELD (input + textarea) ──────────────────────────────────────────────── */
+.input-field {
+  width:         100%;
+  padding:       22px 14px 8px 14px;   /* top padding makes room for floating label */
+  border:        1.5px solid #E5E7EB;
+  border-radius: 10px;
+  font-family:   'DM Sans', sans-serif;
+  font-size:     14px;
+  font-weight:   500;
+  color:         #111827;
+  background:    #FAFBFF;
+  outline:       none;
+  box-sizing:    border-box;
+  transition:
+    border-color 0.2s ease,
+    background   0.2s ease;
+  line-height: 1.5;
+}
+
+/* With left icon — shift text right */
+.input-field--has-icon {
+  padding-left: 42px;
+}
+
+/* With password toggle — shift text from right */
+.input-field--has-toggle {
+  padding-right: 44px;
+}
+
+/* Textarea specific */
+.input-field--textarea {
+  padding-top: 24px;
+  resize:      vertical;
+  min-height:  90px;
+}
+
+/* Focus state */
+.input-field:focus {
+  border-color: #4F46E5;
+  background:   #FFFFFF;
+}
+
+/* Error state */
+.input-wrapper--error .input-field {
+  border-color: #EF4444;
+  background:   #FFFAFA;
+}
+
+.input-wrapper--error .input-field:focus {
+  border-color: #EF4444;
+}
+
+/* Success state */
+.input-wrapper--success .input-field {
+  border-color: #10B981;
+  background:   #FAFFFE;
+}
+
+
+/* ── FLOATING LABEL ────────────────────────────────────────────────────────── */
+.input-label {
+  position:      absolute;
+  left:          14px;
+  top:           50%;
+  transform:     translateY(-50%);
+  font-family:   'DM Sans', sans-serif;
+  font-size:     14px;
+  font-weight:   500;
+  color:         #9CA3AF;
+  pointer-events: none;
+  transition:
+    top        0.2s cubic-bezier(0.4, 0, 0.2, 1),
+    font-size  0.2s cubic-bezier(0.4, 0, 0.2, 1),
+    font-weight 0.2s ease,
+    color      0.2s ease,
+    transform  0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  white-space: nowrap;
+  line-height: 1;
+}
+
+/* Textarea label starts at top */
+.input-wrapper:has(.input-field--textarea) .input-label {
+  top: 20px;
+  transform: none;
+}
+
+/* Label shifts left when icon is present */
+.input-label--with-icon {
+  left: 42px;
+}
+
+/* FLOATED state — label lifts to top */
+.input-label--floated {
+  top:         10px;
+  transform:   translateY(0);
+  font-size:   11px;
+  font-weight: 600;
+  color:       #4F46E5;
+  letter-spacing: 0.02em;
+}
+
+/* Floated label color matches state */
+.input-wrapper--error   .input-label--floated { color: #EF4444; }
+.input-wrapper--success .input-label--floated { color: #10B981; }
+
+/* Textarea floated label stays at top */
+.input-wrapper:has(.input-field--textarea) .input-label--floated {
+  top: 7px;
+}
+
+
+/* ── LEFT ICON ─────────────────────────────────────────────────────────────── */
+.input-icon {
+  position:    absolute;
+  left:        13px;
+  top:         50%;
+  transform:   translateY(-50%);
+  font-size:   17px;
+  color:       #9CA3AF;
+  pointer-events: none;
+  transition:  color 0.2s ease, transform 0.2s ease;
+  line-height: 1;
+}
+
+.input-icon--active {
+  color: #4F46E5;
+}
+
+/* Textarea icon stays at top */
+.input-wrapper:has(.input-field--textarea) .input-icon {
+  top: 22px;
+  transform: none;
+}
+
+
+/* ── PASSWORD TOGGLE ───────────────────────────────────────────────────────── */
+.input-toggle {
+  position:   absolute;
+  right:      12px;
+  top:        50%;
+  transform:  translateY(-50%);
+  background: none;
+  border:     none;
+  cursor:     pointer;
+  color:      #9CA3AF;
+  padding:    4px;
+  border-radius: 6px;
+  display:    flex;
+  align-items: center;
+  justify-content: center;
+  transition: color 0.18s ease, background 0.18s ease;
+  outline:    none;
+}
+
+.input-toggle:hover {
+  color:      #4F46E5;
+  background: #EEF2FF;
+}
+
+
+/* ── SUCCESS CHECKMARK ─────────────────────────────────────────────────────── */
+.input-success-icon {
+  position:   absolute;
+  right:      13px;
+  top:        50%;
+  transform:  translateY(-50%);
+  color:      #10B981;
+  display:    flex;
+  align-items: center;
+
+  /* Pop in animation */
+  animation: icon-pop 0.25s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}
+
+@keyframes icon-pop {
+  from { transform: translateY(-50%) scale(0); opacity: 0; }
+  to   { transform: translateY(-50%) scale(1); opacity: 1; }
+}
+
+
+/* ── MESSAGES (error / success) ────────────────────────────────────────────── */
+.input-message {
+  display:     flex;
+  align-items: center;
+  gap:         5px;
+  margin-top:  5px;
+  font-family: 'DM Sans', sans-serif;
+  font-size:   12px;
+  font-weight: 500;
+  padding-left: 2px;
+
+  /* Slide down animation */
+  animation: msg-slide 0.2s ease forwards;
+}
+
+@keyframes msg-slide {
+  from { opacity: 0; transform: translateY(-4px); }
+  to   { opacity: 1; transform: translateY(0);    }
+}
+
+.input-message--error {
+  color: #EF4444;
+}
+
+.input-message--success {
+  color: #10B981;
+}
+
+/* Error icon inside message */
+.input-message--error svg {
+  flex-shrink: 0;
+}
+
+
+/* ── PLACEHOLDER (shown only after label floats) ───────────────────────────── */
+.input-field::placeholder {
+  color:      #C4C9D4;
+  font-size:  13px;
+  font-weight: 400;
+  opacity: 0;
+  transition: opacity 0.15s ease;
+}
+
+/* Show placeholder only when label is floated (input has focus + value) */
+.input-field:focus::placeholder {
+  opacity: 1;
+}
+
+
+/* ── AUTOFILL FIX (Chrome yellow bg override) ──────────────────────────────── */
+.input-field:-webkit-autofill,
+.input-field:-webkit-autofill:hover,
+.input-field:-webkit-autofill:focus {
+  -webkit-box-shadow: 0 0 0px 1000px #FAFBFF inset;
+  -webkit-text-fill-color: #111827;
+  transition: background-color 5000s ease-in-out 0s;
+}

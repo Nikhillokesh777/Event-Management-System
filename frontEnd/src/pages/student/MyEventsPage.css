@@ -1,0 +1,55 @@
+/* MyEventsPage.css */
+.my-events-page { min-height:100vh; background:#F8F9FF; }
+
+.me__header {
+  display:flex; justify-content:space-between; align-items:flex-start;
+  margin-bottom:24px; flex-wrap:wrap; gap:16px;
+}
+.me__title { font-family:'DM Sans',sans-serif; font-size:28px; font-weight:800; color:#111827; margin:0 0 4px; }
+.me__sub   { font-family:'DM Sans',sans-serif; font-size:14px; color:#9CA3AF; margin:0; }
+
+.me__stats {
+  display:flex; gap:0; margin-bottom:28px;
+  background:#fff; border-radius:14px; overflow:hidden;
+  border:1.5px solid #F1F0FF;
+  box-shadow:0 2px 8px rgba(0,0,0,0.05);
+}
+.me__stat {
+  flex:1; padding:20px; text-align:center;
+  border-right:1px solid #F3F4F6;
+}
+.me__stat:last-child { border-right:none; }
+.me__stat-val   { font-family:'DM Sans',sans-serif; font-size:30px; font-weight:800; line-height:1; margin-bottom:4px; }
+.me__stat-label { font-family:'DM Sans',sans-serif; font-size:13px; color:#9CA3AF; font-weight:500; }
+
+.me__list { display:flex; flex-direction:column; gap:14px; }
+
+.me__item {
+  display:flex; align-items:center; gap:16px;
+  background:#fff; border-radius:14px; padding:16px 20px;
+  border:1.5px solid #F1F0FF;
+  box-shadow:0 1px 4px rgba(0,0,0,0.04);
+  transition:transform 0.2s ease, box-shadow 0.2s ease;
+}
+.me__item:hover {
+  transform:translateY(-2px);
+  box-shadow:0 6px 20px rgba(0,0,0,0.08);
+}
+.me__item-img {
+  width:80px; height:80px; border-radius:10px;
+  object-fit:cover; flex-shrink:0;
+}
+.me__item-info { flex:1; min-width:0; }
+.me__item-title {
+  font-family:'DM Sans',sans-serif; font-size:15px; font-weight:700;
+  color:#111827; margin:0 0 6px;
+  white-space:nowrap; overflow:hidden; text-overflow:ellipsis;
+}
+.me__item-meta {
+  display:flex; gap:14px; flex-wrap:wrap; margin-bottom:8px;
+  font-family:'DM Sans',sans-serif; font-size:12px; color:#6B7280;
+}
+.me__item-bottom { display:flex; align-items:center; gap:8px; flex-wrap:wrap; }
+.me__item-reg-id {
+  font-family:'DM Sans',sans-serif; font-size:11px; color:#C4C9D4; font-weight:500;
+}

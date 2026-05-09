@@ -1,0 +1,63 @@
+/* CreateEditEventPage.css */
+.create-event-page { min-height:100vh; background:#F8F9FF; }
+
+.ce__header { margin-bottom:28px; }
+.ce__back {
+  background:none; border:none; cursor:pointer;
+  font-family:'DM Sans',sans-serif; font-size:13px; font-weight:600;
+  color:#6B7280; padding:0 0 12px; transition:color 0.15s;
+}
+.ce__back:hover { color:#4F46E5; }
+.ce__title { font-family:'DM Sans',sans-serif; font-size:28px; font-weight:800; color:#111827; margin:0 0 4px; }
+.ce__sub   { font-family:'DM Sans',sans-serif; font-size:14px; color:#9CA3AF; margin:0; }
+
+.ce__layout {
+  display:grid; grid-template-columns:1fr 300px;
+  gap:24px; align-items:flex-start;
+}
+
+.ce__main { display:flex; flex-direction:column; gap:20px; }
+
+.ce__card {
+  background:#fff; border-radius:16px; padding:24px;
+  border:1.5px solid #F1F0FF; box-shadow:0 2px 8px rgba(0,0,0,0.05);
+}
+.ce__card-title {
+  font-family:'DM Sans',sans-serif; font-size:15px; font-weight:700;
+  color:#111827; margin:0 0 20px;
+}
+
+.ce__fields { display:flex; flex-direction:column; gap:16px; }
+.ce__row-2  { display:grid; grid-template-columns:1fr 1fr; gap:16px; }
+.ce__row-3  { display:grid; grid-template-columns:1fr 1fr 1fr; gap:16px; }
+
+/* Venue select */
+.ce__select-wrap { display:flex; flex-direction:column; gap:5px; }
+.ce__select-label {
+  font-family:'DM Sans',sans-serif; font-size:12px; font-weight:600;
+  color:#6B7280; padding-left:2px;
+}
+.ce__select {
+  padding:14px; border:1.5px solid #E5E7EB; border-radius:10px;
+  font-family:'DM Sans',sans-serif; font-size:14px; color:#111827;
+  background:#FAFBFF; outline:none; cursor:pointer;
+  transition:border-color 0.2s;
+}
+.ce__select:focus { border-color:#4F46E5; }
+.ce__select-error { font-family:'DM Sans',sans-serif; font-size:12px; color:#EF4444; margin:0; }
+
+/* Sidebar */
+.ce__sidebar { display:flex; flex-direction:column; gap:16px; position:sticky; top:88px; }
+
+.ce__setting {
+  padding:16px 0; border-bottom:1px solid #F3F4F6;
+}
+.ce__setting:last-of-type { border-bottom:none; }
+
+.ce__actions { display:flex; flex-direction:column; gap:10px; }
+
+@media (max-width:900px) {
+  .ce__layout { grid-template-columns:1fr; }
+  .ce__sidebar { position:static; }
+  .ce__row-2, .ce__row-3 { grid-template-columns:1fr; }
+}

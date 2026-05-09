@@ -1,0 +1,424 @@
+/* ─────────────────────────────────────────────────────────────────────────────
+   EmptyState.css — CSS illustrations, gentle float-up entrance
+   ───────────────────────────────────────────────────────────────────────────── */
+
+
+/* ── ENTRANCE ANIMATION ────────────────────────────────────────────────────── */
+@keyframes empty-float-up {
+  from { opacity: 0; transform: translateY(18px); }
+  to   { opacity: 1; transform: translateY(0);    }
+}
+
+@keyframes empty-bob {
+  0%, 100% { transform: translateY(0);   }
+  50%       { transform: translateY(-7px); }
+}
+
+@keyframes star-twinkle {
+  0%, 100% { opacity: 0.3; transform: scale(0.8); }
+  50%       { opacity: 1;   transform: scale(1.2); }
+}
+
+
+/* ── WRAPPER ───────────────────────────────────────────────────────────────── */
+.empty-state {
+  display:        flex;
+  flex-direction: column;
+  align-items:    center;
+  justify-content: center;
+  text-align:     center;
+  padding:        52px 32px;
+  gap:            20px;
+  animation:      empty-float-up 0.5s cubic-bezier(0.34, 1.2, 0.64, 1) forwards;
+}
+
+.empty-state--compact {
+  padding: 24px 20px;
+  gap:     12px;
+}
+
+
+/* ── ILLUSTRATION CONTAINER ────────────────────────────────────────────────── */
+.empty-state__illus {
+  animation: empty-bob 3.5s ease-in-out infinite;
+}
+
+.empty-state--compact .empty-state__illus {
+  animation: none;
+}
+
+/* Shared illustration wrapper */
+.empty-illus {
+  position: relative;
+  width:    120px;
+  height:   120px;
+  display:  flex;
+  align-items: center;
+  justify-content: center;
+}
+
+
+/* ── STAR DECORATIONS (shared across illustrations) ────────────────────────── */
+.illus-star {
+  position:  absolute;
+  color:     #C7D2FE;
+  font-size: 14px;
+  animation: star-twinkle 2s ease-in-out infinite;
+}
+.illus-star--1 { top: 8px;  left: 8px;  animation-delay: 0s;    font-size: 10px; }
+.illus-star--2 { top: 10px; right: 6px; animation-delay: 0.7s;  font-size: 14px; }
+.illus-star--3 { bottom: 8px; right: 20px; animation-delay: 1.2s; font-size: 8px; }
+
+
+/* ══════════════════════════════════════════════════════════════════════════════
+   CALENDAR ILLUSTRATION (no-events)
+══════════════════════════════════════════════════════════════════════════════ */
+.illus-calendar {
+  position:      relative;
+  width:         80px;
+  height:        76px;
+  background:    #ffffff;
+  border-radius: 12px;
+  border:        2px solid #E0E7FF;
+  box-shadow:    0 4px 16px rgba(79,70,229,0.12);
+  overflow:      hidden;
+}
+
+.illus-calendar__header {
+  height:     22px;
+  background: linear-gradient(135deg, #4F46E5, #6366F1);
+  width:      100%;
+}
+
+.illus-calendar__rings {
+  position: absolute;
+  top:      10px;
+  left:     0;
+  width:    100%;
+  display:  flex;
+  justify-content: space-evenly;
+  pointer-events: none;
+}
+
+.illus-calendar__rings span {
+  width:         8px;
+  height:        14px;
+  background:    #ffffff;
+  border-radius: 4px;
+  border:        2px solid #C7D2FE;
+}
+
+.illus-calendar__body {
+  padding:  8px 8px 4px;
+  position: relative;
+}
+
+.illus-calendar__row {
+  display:        flex;
+  justify-content: space-between;
+  margin-bottom:  5px;
+}
+
+.illus-calendar__cell {
+  width:         12px;
+  height:        8px;
+  background:    #E0E7FF;
+  border-radius: 2px;
+}
+
+/* Big X overlay */
+.illus-calendar__x {
+  position:  absolute;
+  inset:     0;
+  display:   flex;
+  align-items: center;
+  justify-content: center;
+  font-size:  26px;
+  font-weight: 800;
+  color:      #EF4444;
+  opacity:    0.85;
+  background: rgba(255,255,255,0.5);
+}
+
+
+/* ══════════════════════════════════════════════════════════════════════════════
+   CLIPBOARD ILLUSTRATION (no-registrations)
+══════════════════════════════════════════════════════════════════════════════ */
+.illus-clipboard {
+  position:      relative;
+  width:         72px;
+  height:        88px;
+  background:    #ffffff;
+  border-radius: 10px;
+  border:        2px solid #E0E7FF;
+  box-shadow:    0 4px 16px rgba(79,70,229,0.1);
+}
+
+.illus-clipboard__clip {
+  position:      absolute;
+  top:           -10px;
+  left:          50%;
+  transform:     translateX(-50%);
+  width:         28px;
+  height:        14px;
+  background:    #C7D2FE;
+  border-radius: 6px 6px 0 0;
+  border:        2px solid #A5B4FC;
+}
+
+.illus-clipboard__body {
+  padding: 18px 12px 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  align-items: flex-start;
+}
+
+.illus-clipboard__line {
+  height:        6px;
+  width:         100%;
+  background:    #E0E7FF;
+  border-radius: 3px;
+}
+.illus-clipboard__line--short { width: 60%; }
+.illus-clipboard__line--med   { width: 75%; }
+
+.illus-clipboard__face {
+  width:   100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 2px;
+  gap: 2px;
+}
+
+.illus-face__eyes {
+  font-size:   11px;
+  color:       #9CA3AF;
+  letter-spacing: 4px;
+}
+
+.illus-face__mouth {
+  font-size: 12px;
+  color:     #9CA3AF;
+}
+
+
+/* ══════════════════════════════════════════════════════════════════════════════
+   PEOPLE ILLUSTRATION (no-students)
+══════════════════════════════════════════════════════════════════════════════ */
+.illus-people {
+  position:    relative;
+  display:     flex;
+  align-items: flex-end;
+  gap:         4px;
+}
+
+.illus-person {
+  display:        flex;
+  flex-direction: column;
+  align-items:    center;
+  gap:            3px;
+}
+
+.illus-person__head {
+  width:         18px;
+  height:        18px;
+  border-radius: 50%;
+  background:    #C7D2FE;
+  border:        2px solid #A5B4FC;
+}
+
+.illus-person__head--main {
+  width:      24px;
+  height:     24px;
+  background: #818CF8;
+  border-color: #6366F1;
+}
+
+.illus-person__body {
+  width:         16px;
+  height:        24px;
+  background:    #E0E7FF;
+  border-radius: 8px 8px 4px 4px;
+  border:        2px solid #C7D2FE;
+}
+
+.illus-person__body--main {
+  width:      20px;
+  height:     30px;
+  background: #C7D2FE;
+  border-color: #A5B4FC;
+}
+
+.illus-people__q {
+  position:    absolute;
+  top:         -8px;
+  right:       -14px;
+  font-size:   22px;
+  font-weight: 800;
+  color:       #6366F1;
+}
+
+
+/* ══════════════════════════════════════════════════════════════════════════════
+   SEARCH ILLUSTRATION (no-search)
+══════════════════════════════════════════════════════════════════════════════ */
+.illus-search {
+  position: relative;
+}
+
+.illus-search__glass {
+  position: relative;
+  display:  flex;
+  align-items: flex-end;
+}
+
+.illus-search__circle {
+  width:         64px;
+  height:        64px;
+  border-radius: 50%;
+  border:        5px solid #C7D2FE;
+  background:    #EEF2FF;
+  display:       flex;
+  align-items:   center;
+  justify-content: center;
+}
+
+.illus-search__x {
+  font-size:   22px;
+  font-weight: 800;
+  color:       #EF4444;
+}
+
+.illus-search__handle {
+  width:         20px;
+  height:        5px;
+  background:    #A5B4FC;
+  border-radius: 3px;
+  transform:     rotate(45deg) translateX(4px) translateY(-2px);
+  transform-origin: left center;
+  margin-left:   -8px;
+  margin-bottom: 4px;
+}
+
+
+/* ══════════════════════════════════════════════════════════════════════════════
+   BELL ILLUSTRATION (no-notifications)
+══════════════════════════════════════════════════════════════════════════════ */
+.illus-bell {
+  position: relative;
+  display:  flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0;
+}
+
+.illus-bell__top {
+  width:         10px;
+  height:        10px;
+  border-radius: 50% 50% 0 0;
+  background:    #A5B4FC;
+  margin-bottom: -2px;
+  z-index:       1;
+}
+
+.illus-bell__body {
+  width:         56px;
+  height:        48px;
+  background:    linear-gradient(180deg, #C7D2FE, #A5B4FC);
+  border-radius: 28px 28px 4px 4px;
+  border:        2px solid #818CF8;
+}
+
+.illus-bell__base {
+  width:         64px;
+  height:        8px;
+  background:    #818CF8;
+  border-radius: 4px;
+  margin-top:    -2px;
+}
+
+.illus-bell__clapper {
+  width:         12px;
+  height:        12px;
+  border-radius: 50%;
+  background:    #6366F1;
+  margin-top:    3px;
+  border:        2px solid #4F46E5;
+}
+
+/* Zzz floating */
+.illus-bell__z {
+  position:    absolute;
+  font-weight: 800;
+  color:       #A5B4FC;
+  animation:   star-twinkle 1.8s ease-in-out infinite;
+}
+
+.illus-bell__z--1 { font-size: 10px; top: 0;   right: 10px; animation-delay: 0s;   }
+.illus-bell__z--2 { font-size: 13px; top: -8px; right: 2px;  animation-delay: 0.4s; }
+.illus-bell__z--3 { font-size: 16px; top: -18px; right: -6px; animation-delay: 0.8s; }
+
+
+/* ══════════════════════════════════════════════════════════════════════════════
+   TEXT & BUTTON
+══════════════════════════════════════════════════════════════════════════════ */
+.empty-state__text {
+  display:        flex;
+  flex-direction: column;
+  gap:            8px;
+  max-width:      320px;
+}
+
+.empty-state__title {
+  font-family: 'DM Sans', sans-serif;
+  font-size:   18px;
+  font-weight: 800;
+  color:       #1F2937;
+  margin:      0;
+  line-height: 1.3;
+}
+
+.empty-state--compact .empty-state__title {
+  font-size: 14px;
+}
+
+.empty-state__subtitle {
+  font-family: 'DM Sans', sans-serif;
+  font-size:   13px;
+  font-weight: 400;
+  color:       #9CA3AF;
+  margin:      0;
+  line-height: 1.6;
+}
+
+.empty-state--compact .empty-state__subtitle {
+  font-size: 12px;
+}
+
+/* Action button */
+.empty-state__btn {
+  padding:       10px 24px;
+  background:    linear-gradient(135deg, #4F46E5, #3B82F6);
+  color:         #ffffff;
+  border:        none;
+  border-radius: 8px;
+  font-family:   'DM Sans', sans-serif;
+  font-size:     14px;
+  font-weight:   600;
+  cursor:        pointer;
+  box-shadow:    0 4px 14px rgba(79, 70, 229, 0.3);
+  transition:
+    transform  0.2s cubic-bezier(0.34, 1.4, 0.64, 1),
+    box-shadow 0.2s ease;
+}
+
+.empty-state__btn:hover {
+  transform:  translateY(-2px);
+  box-shadow: 0 8px 24px rgba(79, 70, 229, 0.42);
+}
+
+.empty-state__btn:active {
+  transform: translateY(0);
+}

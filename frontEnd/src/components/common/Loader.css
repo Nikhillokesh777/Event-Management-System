@@ -1,0 +1,180 @@
+/* ─────────────────────────────────────────────────────────────────────────────
+   Loader.css — Clean Apple spinning ring, scales from inline to full page
+   ───────────────────────────────────────────────────────────────────────────── */
+
+
+/* ── SPIN ANIMATION ────────────────────────────────────────────────────────── */
+@keyframes loader-spin {
+  0%   { transform: rotate(0deg);   }
+  100% { transform: rotate(360deg); }
+}
+
+/* Fade in so it doesn't flash instantly */
+@keyframes loader-fadein {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+
+/* ── RING BASE ─────────────────────────────────────────────────────────────── */
+.loader__ring {
+  border-radius: 50%;
+  flex-shrink:   0;
+  animation:
+    loader-spin   0.75s cubic-bezier(0.4, 0, 0.6, 1) infinite,
+    loader-fadein 0.2s ease forwards;
+  display: inline-block;
+}
+
+/* The arc — Apple style: thin light track + colored moving arc */
+.loader__arc {
+  width:         100%;
+  height:        100%;
+  border-radius: 50%;
+  box-sizing:    border-box;
+}
+
+
+/* ── SIZES ─────────────────────────────────────────────────────────────────── */
+.loader__ring--sm  { width: 16px;  height: 16px;  }
+.loader__ring--md  { width: 28px;  height: 28px;  }
+.loader__ring--lg  { width: 40px;  height: 40px;  }
+.loader__ring--xl  { width: 56px;  height: 56px;  }
+
+/* Arc border scales with ring size */
+.loader__ring--sm  .loader__arc { border-width: 2px;   }
+.loader__ring--md  .loader__arc { border-width: 3px;   }
+.loader__ring--lg  .loader__arc { border-width: 3.5px; }
+.loader__ring--xl  .loader__arc { border-width: 4px;   }
+
+
+/* ── COLOR VARIANTS ────────────────────────────────────────────────────────── */
+
+/* Indigo */
+.loader__ring--indigo .loader__arc {
+  border-style: solid;
+  border-color: #E0E7FF #E0E7FF #E0E7FF #4F46E5;
+}
+
+/* Blue */
+.loader__ring--blue .loader__arc {
+  border-style: solid;
+  border-color: #DBEAFE #DBEAFE #DBEAFE #3B82F6;
+}
+
+/* Green */
+.loader__ring--green .loader__arc {
+  border-style: solid;
+  border-color: #D1FAE5 #D1FAE5 #D1FAE5 #10B981;
+}
+
+/* White — for use inside dark backgrounds */
+.loader__ring--white .loader__arc {
+  border-style: solid;
+  border-color: rgba(255,255,255,0.25) rgba(255,255,255,0.25) rgba(255,255,255,0.25) #ffffff;
+}
+
+/* Gray */
+.loader__ring--gray .loader__arc {
+  border-style: solid;
+  border-color: #F3F4F6 #F3F4F6 #F3F4F6 #9CA3AF;
+}
+
+
+/* ── FULL PAGE ─────────────────────────────────────────────────────────────── */
+.loader-fullpage {
+  position:        fixed;
+  inset:           0;
+  z-index:         999;
+  background:      #F8F9FF;
+  display:         flex;
+  align-items:     center;
+  justify-content: center;
+  animation:       loader-fadein 0.2s ease forwards;
+}
+
+.loader-fullpage__inner {
+  display:        flex;
+  flex-direction: column;
+  align-items:    center;
+  gap:            20px;
+}
+
+/* Brand mark — pulsing logo above spinner */
+.loader-fullpage__brand {
+  width:           56px;
+  height:          56px;
+  border-radius:   16px;
+  background:      linear-gradient(135deg, #4F46E5, #3B82F6);
+  display:         flex;
+  align-items:     center;
+  justify-content: center;
+  font-size:       26px;
+  box-shadow:      0 8px 24px rgba(79, 70, 229, 0.35);
+  animation:       brand-pulse 1.8s ease-in-out infinite;
+}
+
+@keyframes brand-pulse {
+  0%, 100% {
+    transform:  scale(1);
+    box-shadow: 0 8px 24px rgba(79, 70, 229, 0.35);
+  }
+  50% {
+    transform:  scale(1.06);
+    box-shadow: 0 12px 32px rgba(79, 70, 229, 0.5);
+  }
+}
+
+/* Full page uses xl ring */
+.loader-fullpage .loader__ring {
+  width:  44px;
+  height: 44px;
+}
+
+.loader-fullpage .loader__ring .loader__arc {
+  border-width: 4px;
+}
+
+
+/* ── SECTION LOADER ────────────────────────────────────────────────────────── */
+.loader-section {
+  display:        flex;
+  flex-direction: column;
+  align-items:    center;
+  justify-content: center;
+  gap:            14px;
+  padding:        48px 24px;
+  width:          100%;
+  animation:      loader-fadein 0.25s ease forwards;
+}
+
+
+/* ── INLINE LOADER ─────────────────────────────────────────────────────────── */
+.loader-inline {
+  display:     inline-flex;
+  align-items: center;
+  gap:         8px;
+  vertical-align: middle;
+}
+
+
+/* ── LABELS ────────────────────────────────────────────────────────────────── */
+.loader__label {
+  font-family: 'DM Sans', sans-serif;
+  font-size:   14px;
+  font-weight: 500;
+  color:       #6B7280;
+  margin:      0;
+  text-align:  center;
+  animation:   loader-fadein 0.3s ease 0.1s both;
+}
+
+.loader__label--fullpage {
+  font-size: 15px;
+  color:     #9CA3AF;
+}
+
+.loader__label--inline {
+  font-size: 13px;
+  display:   inline;
+}

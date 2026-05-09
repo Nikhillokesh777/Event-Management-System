@@ -1,0 +1,157 @@
+/* ─────────────────────────────────────────────────────────────────────────────
+   Toggle.css — iOS pill switch, spring bounce, label on right
+   ───────────────────────────────────────────────────────────────────────────── */
+
+
+/* ── WRAPPER — acts as the clickable label ─────────────────────────────────── */
+.toggle-wrapper {
+  display:     inline-flex;
+  align-items: center;
+  gap:         12px;
+  cursor:      pointer;
+  user-select: none;
+  width:       fit-content;
+}
+
+.toggle-wrapper--disabled {
+  opacity:       0.45;
+  cursor:        not-allowed;
+  pointer-events: none;
+}
+
+/* Hide native checkbox completely */
+.toggle-input {
+  position: absolute;
+  opacity:  0;
+  width:    0;
+  height:   0;
+  pointer-events: none;
+}
+
+
+/* ── TRACK (the pill background) ───────────────────────────────────────────── */
+.toggle-track {
+  position:      relative;
+  display:       inline-block;
+  flex-shrink:   0;
+  border-radius: 999px;
+  background:    #D1D5DB;
+  transition:    background 0.25s ease, box-shadow 0.25s ease;
+}
+
+/* Sizes */
+.toggle-track--sm { width: 34px; height: 20px; }
+.toggle-track--md { width: 44px; height: 26px; }
+.toggle-track--lg { width: 54px; height: 32px; }
+
+/* Hover — track brightens slightly */
+.toggle-wrapper:hover .toggle-track {
+  background: #B0B7C3;
+}
+
+/* ON state colors */
+.toggle-track--on.toggle-track--blue   { background: #3B82F6; }
+.toggle-track--on.toggle-track--indigo { background: #4F46E5; }
+.toggle-track--on.toggle-track--green  { background: #10B981; }
+
+/* ON hover — slightly darker */
+.toggle-wrapper:hover .toggle-track--on.toggle-track--blue   { background: #2563EB; }
+.toggle-wrapper:hover .toggle-track--on.toggle-track--indigo { background: #4338CA; }
+.toggle-wrapper:hover .toggle-track--on.toggle-track--green  { background: #059669; }
+
+/* ON glow */
+.toggle-track--on.toggle-track--blue   { box-shadow: 0 0 0 3px rgba(59,  130, 246, 0.18); }
+.toggle-track--on.toggle-track--indigo { box-shadow: 0 0 0 3px rgba(79,  70,  229, 0.18); }
+.toggle-track--on.toggle-track--green  { box-shadow: 0 0 0 3px rgba(16,  185, 129, 0.18); }
+
+/* Focus ring — shows when toggled via keyboard */
+.toggle-input:focus-visible + .toggle-track {
+  outline:        2.5px solid #4F46E5;
+  outline-offset: 3px;
+}
+
+
+/* ── THUMB (the sliding circle) ────────────────────────────────────────────── */
+.toggle-thumb {
+  position:      absolute;
+  top:           50%;
+  transform:     translateY(-50%);
+  border-radius: 50%;
+  background:    #ffffff;
+
+  /* Soft shadow so thumb floats above track */
+  box-shadow:
+    0 1px 4px rgba(0, 0, 0, 0.18),
+    0 2px 8px rgba(0, 0, 0, 0.1);
+
+  /* Spring bounce — iOS feel */
+  transition: left 0.28s cubic-bezier(0.34, 1.6, 0.64, 1);
+}
+
+/* Thumb sizes + OFF position */
+.toggle-thumb--sm {
+  width:  16px;
+  height: 16px;
+  left:   2px;
+}
+
+.toggle-thumb--md {
+  width:  20px;
+  height: 20px;
+  left:   3px;
+}
+
+.toggle-thumb--lg {
+  width:  26px;
+  height: 26px;
+  left:   3px;
+}
+
+/* ON position — slides to right */
+.toggle-thumb--sm.toggle-thumb--on  { left: calc(34px - 16px - 2px); }
+.toggle-thumb--md.toggle-thumb--on  { left: calc(44px - 20px - 3px); }
+.toggle-thumb--lg.toggle-thumb--on  { left: calc(54px - 26px - 3px); }
+
+/* Thumb squishes slightly while sliding — iOS micro-detail */
+.toggle-wrapper:active .toggle-thumb--sm { width: 18px; }
+.toggle-wrapper:active .toggle-thumb--md { width: 23px; }
+.toggle-wrapper:active .toggle-thumb--lg { width: 30px; }
+
+/* Active squish adjusts position so it stays in track */
+.toggle-wrapper:active .toggle-thumb--md.toggle-thumb--on  { left: calc(44px - 23px - 3px); }
+.toggle-wrapper:active .toggle-thumb--lg.toggle-thumb--on  { left: calc(54px - 30px - 3px); }
+
+
+/* ── LABELS ────────────────────────────────────────────────────────────────── */
+.toggle-labels {
+  display:        flex;
+  flex-direction: column;
+  gap:            2px;
+}
+
+.toggle-label {
+  font-family: 'DM Sans', sans-serif;
+  font-size:   14px;
+  font-weight: 600;
+  color:       #1F2937;
+  line-height: 1.3;
+  transition:  color 0.2s ease;
+}
+
+.toggle-sublabel {
+  font-family: 'DM Sans', sans-serif;
+  font-size:   12px;
+  font-weight: 400;
+  color:       #9CA3AF;
+  line-height: 1.3;
+}
+
+/* Label color deepens when ON */
+.toggle-wrapper:has(.toggle-track--on) .toggle-label {
+  color: #111827;
+}
+
+
+/* ── SIZE ADJUSTMENTS FOR LABELS ───────────────────────────────────────────── */
+.toggle-wrapper:has(.toggle-track--sm) .toggle-label { font-size: 13px; }
+.toggle-wrapper:has(.toggle-track--lg) .toggle-label { font-size: 15px; }

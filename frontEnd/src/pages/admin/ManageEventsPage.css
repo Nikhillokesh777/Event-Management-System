@@ -1,0 +1,48 @@
+/* ManageEventsPage.css */
+.manage-events-page { min-height:100vh; background:#F8F9FF; }
+
+.me2__header {
+  display:flex; justify-content:space-between; align-items:flex-start;
+  margin-bottom:24px; gap:16px; flex-wrap:wrap;
+}
+.me2__title { font-family:'DM Sans',sans-serif; font-size:28px; font-weight:800; color:#111827; margin:0 0 4px; }
+.me2__sub   { font-family:'DM Sans',sans-serif; font-size:14px; color:#9CA3AF; margin:0; }
+
+.me2__search {
+  display:flex; align-items:center; gap:8px;
+  background:#fff; border:1.5px solid #E5E7EB; border-radius:10px; padding:0 12px;
+  transition:border-color 0.2s;
+}
+.me2__search:focus-within { border-color:#4F46E5; }
+.me2__search input {
+  border:none; outline:none; font-family:'DM Sans',sans-serif; font-size:14px;
+  color:#111827; padding:10px 0; background:transparent; width:200px;
+}
+
+.me2__table-wrap {
+  background:#fff; border-radius:16px; overflow:hidden;
+  border:1.5px solid #F1F0FF; box-shadow:0 2px 12px rgba(0,0,0,0.05);
+  overflow-x:auto;
+}
+.me2__table { width:100%; border-collapse:collapse; min-width:900px; }
+.me2__table thead tr { background:#F8F9FF; border-bottom:1px solid #F3F4F6; }
+.me2__table th {
+  padding:12px 14px;
+  font-family:'DM Sans',sans-serif; font-size:11px; font-weight:700;
+  color:#9CA3AF; text-align:left; text-transform:uppercase; letter-spacing:0.05em;
+}
+.me2__row { border-bottom:1px solid #F9FAFB; transition:background 0.15s; }
+.me2__row:last-child { border-bottom:none; }
+.me2__row:hover { background:#FAFBFF; }
+.me2__table td { padding:12px 14px; vertical-align:middle; }
+
+.me2__event-cell { display:flex; align-items:center; gap:10px; }
+.me2__thumb { width:40px; height:40px; border-radius:8px; object-fit:cover; flex-shrink:0; }
+.me2__event-name { font-family:'DM Sans',sans-serif; font-size:13px; font-weight:700; color:#111827; }
+.me2__event-org  { font-family:'DM Sans',sans-serif; font-size:11px; color:#9CA3AF; margin-top:1px; }
+
+.me2__cell { font-family:'DM Sans',sans-serif; font-size:13px; color:#6B7280; }
+.me2__seats { display:flex; flex-direction:column; gap:4px; min-width:80px; }
+.me2__seats span { font-family:'DM Sans',sans-serif; font-size:12px; font-weight:600; color:#374151; }
+.me2__bar  { height:4px; background:#F3F4F6; border-radius:99px; overflow:hidden; }
+.me2__fill { height:100%; border-radius:99px; }

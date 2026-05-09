@@ -1,0 +1,130 @@
+/* ─────────────────────────────────────────────────────────────────────────────
+   SkeletonCard.css — Apple soft pulse fade, 4 shape variants
+   ───────────────────────────────────────────────────────────────────────────── */
+
+
+/* ── PULSE ANIMATION ───────────────────────────────────────────────────────── */
+@keyframes skeleton-pulse {
+  0%, 100% { opacity: 1;    }
+  50%       { opacity: 0.45; }
+}
+
+
+/* ── BONE — base reusable block ────────────────────────────────────────────── */
+.skeleton-bone {
+  background: #E9EBF0;
+  display:    block;
+  animation:  skeleton-pulse 1.6s ease-in-out infinite;
+}
+
+/* Stagger pulse slightly per sibling so they feel organic */
+.skeleton-bone:nth-child(2) { animation-delay: 0.1s; }
+.skeleton-bone:nth-child(3) { animation-delay: 0.2s; }
+.skeleton-bone:nth-child(4) { animation-delay: 0.3s; }
+.skeleton-bone:nth-child(5) { animation-delay: 0.15s; }
+
+
+/* ── BASE CARD WRAPPER ─────────────────────────────────────────────────────── */
+.skeleton-card {
+  background:    #ffffff;
+  border-radius: 16px;
+  overflow:      hidden;
+  box-shadow:
+    0 1px 3px rgba(0,0,0,0.05),
+    0 6px 20px rgba(0,0,0,0.04);
+  border: 1.5px solid #F3F4F6;
+
+  /* Fade in */
+  animation: skeleton-fadein 0.25s ease forwards;
+}
+
+@keyframes skeleton-fadein {
+  from { opacity: 0; transform: translateY(6px); }
+  to   { opacity: 1; transform: translateY(0);   }
+}
+
+
+/* ── EVENT CARD SKELETON ───────────────────────────────────────────────────── */
+.skeleton-card--event {
+  display:        flex;
+  flex-direction: column;
+}
+
+/* Image bone has no radius (flush to card edges) */
+.skeleton-card--event > .skeleton-bone {
+  border-radius: 0;
+}
+
+.skeleton-card__body {
+  padding: 16px 18px 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.skeleton-card__meta {
+  display:        flex;
+  flex-direction: column;
+  gap:            7px;
+  margin-top:     8px;
+  margin-bottom:  4px;
+}
+
+.skeleton-card__cap {
+  margin-top: 8px;
+}
+
+
+/* ── STAT CARD SKELETON ────────────────────────────────────────────────────── */
+.skeleton-card--stat {
+  padding:    24px 24px 20px;
+  min-height: 140px;
+  /* Slight gradient tint to mimic colored stat cards */
+  background: linear-gradient(135deg, #F5F3FF, #EEF2FF);
+  border-color: #E0E7FF;
+}
+
+.skeleton-card--stat .skeleton-bone {
+  background: rgba(79, 70, 229, 0.1);
+}
+
+
+/* ── TABLE ROW SKELETON ────────────────────────────────────────────────────── */
+.skeleton-card--tablerow {
+  display:     flex;
+  align-items: center;
+  gap:         16px;
+  padding:     14px 20px;
+  border-radius: 0;
+  border:      none;
+  box-shadow:  none;
+  border-bottom: 1px solid #F9FAFB;
+  background:  #ffffff;
+}
+
+.skeleton-card--tablerow:last-child {
+  border-bottom: none;
+}
+
+.skeleton-tablerow__info {
+  flex:    1;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+
+/* ── LIST ITEM SKELETON ────────────────────────────────────────────────────── */
+.skeleton-card--listitem {
+  display:     flex;
+  align-items: flex-start;
+  gap:         16px;
+  padding:     18px 20px;
+  border-radius: 14px;
+}
+
+.skeleton-listitem__info {
+  flex:    1;
+  display: flex;
+  flex-direction: column;
+}
