@@ -53,8 +53,8 @@ function LoginPage() {
   };
 
   const fillDemo = async (role) => {
-    const demoEmail    = role === 'admin' ? 'noor@paruluniversity.ac.in' : 'nikhillokesh229@gmail.com';
-    const demoPassword = role === 'admin' ? 'noor mahammad' : 'nikhil1972';
+    const demoEmail = role === 'admin' ? 'admin@example.com' : 'student@example.com';
+    const demoPassword = role === 'admin' ? 'change-me-admin' : 'change-me-student';
     setEmail(demoEmail);
     setPassword(demoPassword);
     setErrors({});
